@@ -1,0 +1,53 @@
+#1.
+
+INSERT INTO alikas.customer
+(store_id,first_name,last_name,email,address_id)
+VALUES
+(1,'name','lastname','email@gmail.com','699');
+
+
+#2.
+
+select *
+from alikas.customer
+where last_name like '%S' ;
+
+
+#3.
+
+INSERT INTO alikas.customer
+(store_id,first_name,last_name,email,address_id)
+select store_id
+,first_name
+,last_name
+,email
+,address_id 
+from alikas.customer 
+where
+last_name like '%S';
+
+
+#4.
+
+select * from alikas.customer where customer_id > 606;
+
+
+#5.
+
+SET SQL_SAFE_UPDATES = 0;
+update alikas.customer
+SET last_name = lower(last_name)
+where
+customer_id > 606;
+SET SQL_SAFE_UPDATES = 1;
+select * from alikas.customer where customer_id > 606;
+
+
+#6.
+
+SET SQL_SAFE_UPDATES = 0;
+delete from alikas.customer
+where last_name like 'S%';
+SET SQL_SAFE_UPDATES = 1;
+
+
